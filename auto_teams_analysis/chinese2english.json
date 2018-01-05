@@ -926,5 +926,41 @@
   "普罗维尔塞利":{
     "name":"FC_Pro_Vercelli",
     "league":"10"
+  },
+  "兄弟联队":{
+    "name":"Brothers_Union",
+    "league":"13"
+  },
+  "法拉什甘":{
+    "name":"Farashganj_SC",
+    "league":"13"
+  },
+  "阿巴哈尼":{
+    "name":"Abahani_Limited",
+    "league":"13"
+  },
+  "齐塔冈阿巴巴尼":{
+    "name":"Chittagong_Abahani",
+    "league":"13"
+  },
+  "阿拉姆巴格":{
+    "name":"Arambagh_KS",
+    "league":"13"
+  },
+  "莫哈梅丹":{
+    "name":"Mohammedan_Dhaka",
+    "league":"13"
+  },
+  "桑萨德":{
+    "name":"Muktijoddha_SKC",
+    "league":"13"
+  },
+  "拉马特贡MFS":{
+    "name":"Rahmatgonj_MFS",
+    "league":"13"
+  },
+  "塞克拉塞尔":{
+    "name":"Sheikh_Russel_KC",
+    "league":"13"
   }
 }
