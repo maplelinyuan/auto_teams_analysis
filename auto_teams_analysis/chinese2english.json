@@ -962,5 +962,25 @@
   "塞克拉塞尔":{
     "name":"Sheikh_Russel_KC",
     "league":"13"
+  },
+  "班加罗尔":{
+    "name":"Bengaluru",
+    "league":"14"
+  },
+  "拉琼":{
+    "name":"Shillong_Lajong_FC",
+    "league":"15"
+  },
+  "东孟加拉":{
+    "name":"East_Bengal",
+    "league":"15"
+  },
+  "莫亨巴甘竞技":{
+    "name":"Mohun_Bagan(Ind)",
+    "league":"15"
+  },
+  "丘吉尔兄弟":{
+    "name":"Churchill_Brothers",
+    "league":"15"
   }
 }

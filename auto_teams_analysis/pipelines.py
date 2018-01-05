@@ -18,7 +18,7 @@ nowatime = datetime.datetime.now().strftime('%Y_%m_%d_%H%M')
 
 class AutoTeamsAnalysisPipeline(object):
     def process_item(self, item, spider):
-        if spider.name == 'odds_spider':
+        if spider.name == 'auto_teams_analysis':
         # 这里写爬虫 odds_spider 的逻辑
             match_list = item['match_list']
             # 获取查询日期
@@ -53,7 +53,7 @@ class AutoTeamsAnalysisPipeline(object):
                     )
                     cursor.execute(build_table % tableName)
                     # 建表完成
-
+                    # pdb.set_trace()
                     for single_match in match_list:
                         cursor.execute('SELECT match_id FROM %s WHERE match_id="%s"' % (tableName, single_match['match_id']))
                         table_row_len = len(cursor.fetchall())

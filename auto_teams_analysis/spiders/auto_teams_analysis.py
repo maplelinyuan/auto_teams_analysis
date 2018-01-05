@@ -12,11 +12,16 @@ import pymysql.cursors
 
 match_name_dict = {
     'ISL': '印度超',
+    'IND D1': '印度甲',
+    'BGD D1': '孟加拉超',
     # 'EGY D1': '埃及超',
     # 'INT CF': '国际友谊',
     'SPA CUP': '西杯',
     'POR D1': '葡超',
     'ENG PR': '英超',
+    'ENG FAC': '英足总杯',
+    'ITA D1': '意甲',
+    'BEL D2': '比乙',
     'AUS D1': '澳超',
 }
 
@@ -61,6 +66,40 @@ class OddSpider(scrapy.Spider):
         with connection.cursor() as cursor:
             # 设置当前表名
             tableName = 'teams_' + search_date.replace('-', '_')  # 当前查询日期为表名
+            cursor.execute('SELECT * FROM %s WHERE home_rate>0 and away_rate>0' % tableName)
+            for match in cursor.fetchall():
+                single_match = {}
+                single_match['match_id'] = match['match_id']
+                single_match['match_name'] = match['match_name']
+                single_match['time_score'] = match['time_score']
+                single_match['home_name'] = match['home_name']
+                single_match['away_name'] = match['away_name']
+                single_match['home_rate'] = match['home_rate']
+                single_match['away_rate'] = match['away_rate']
+                single_match['average_completed_match'] = match['average_completed_match']
+                completed_match_list.append(single_match)
+            # connection is not autocommit by default. So you must commit to save your changes.
+            cursor.close()
+    finally:
+        connection.close()
+
+    # Connect to the database
+    # 去拿取已经获得首发率的match_id放入列表中，不去服务器拉取该比赛球员数据
+    db_name = 'auto_teams_analysis'
+    config = {
+        'host': '127.0.0.1',
+        'user': 'root',
+        'password': '19940929',
+        'db': db_name,
+        'charset': 'utf8mb4',
+        'cursorclass': pymysql.cursors.DictCursor
+    }
+    connection = pymysql.connect(**config)
+    print('连接至数据库:' + db_name)
+    try:
+        with connection.cursor() as cursor:
+            # 设置当前表名
+            tableName = 'teams_' + search_date.replace('-', '_')  # 当前查询日期为表名
             # 建立当前队伍表
             build_table = (
                 "CREATE TABLE IF NOT EXISTS "' %s '""
@@ -76,18 +115,6 @@ class OddSpider(scrapy.Spider):
             )
             cursor.execute(build_table % tableName)
             # 建表完成
-            cursor.execute('SELECT * FROM %s WHERE home_rate>0 and away_rate>0' % tableName)
-            for match in cursor.fetchall():
-                single_match = {}
-                single_match['match_id'] = match['match_id']
-                single_match['match_name'] = match['match_name']
-                single_match['time_score'] = match['time_score']
-                single_match['home_name'] = match['home_name']
-                single_match['away_name'] = match['away_name']
-                single_match['home_rate'] = match['home_rate']
-                single_match['away_rate'] = match['away_rate']
-                single_match['average_completed_match'] = match['average_completed_match']
-                completed_match_list.append(single_match)
             # connection is not autocommit by default. So you must commit to save your changes.
             cursor.close()
     finally:
@@ -107,6 +134,8 @@ class OddSpider(scrapy.Spider):
                 count += 1
                 continue
             if count % 2 == 1:
+                if len(tr.xpath('td')[0].xpath('text()').extract()) == 0:
+                    continue
                 league_name = tr.xpath('td')[0].xpath('text()').extract()[0]    # 联赛名称，是英文，需要用字典转为中文
                 # 如果不在要获取的联赛列表中就跳过
                 if not league_name in match_name_dict.keys():
@@ -162,6 +191,7 @@ class OddSpider(scrapy.Spider):
                 odd_match_list[match_index]['away_now_probability'] = round(float(away_now_probability.replace('%', ''))/100, 3)
                 odd_match_list[match_index]['now_payBack_rate'] = round(float(now_payBack_rate.replace('%', ''))/100, 3)
             count += 1
+
         # 打开chinese2english, 将之前保存的首发信息中的名称转换为英文再与当前odd列表中的信息进行模糊匹配找出那场比赛，进行计算
         with open('auto_teams_analysis/chinese2english.json', 'r', encoding='utf-8') as json_file:
             chinese2english = json.load(json_file)
@@ -184,13 +214,13 @@ class OddSpider(scrapy.Spider):
             away_rate = single_match['away_rate']
 
             # 查找对应的比赛
-            patten_home_name_1 = home_name[0:5] + '.*?'
+            patten_home_name_1 = home_name[0:4] + '.*?'
             regex_home_name_1 = re.compile(patten_home_name_1)
-            patten_home_name_2 = home_name[-5:] + '.*?'
+            patten_home_name_2 = home_name[-4:] + '.*?'
             regex_home_name_2 = re.compile(patten_home_name_2)
-            patten_away_name_1 = away_name[0:5] + '.*?'
+            patten_away_name_1 = away_name[0:4] + '.*?'
             regex_away_name_1 = re.compile(patten_away_name_1)
-            patten_away_name_2 = away_name[-5:] + '.*?'
+            patten_away_name_2 = away_name[-4:] + '.*?'
             regex_away_name_2 = re.compile(patten_away_name_2)
             odd_home_name_list = [item['home_name'] for item in odd_match_list]
             odd_away_name_list = [item['away_name'] for item in odd_match_list]
