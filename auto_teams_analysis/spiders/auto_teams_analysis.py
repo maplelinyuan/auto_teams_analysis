@@ -153,18 +153,27 @@ class OddSpider(scrapy.Spider):
 
     # 分析每行信息
     def parse(self, response):
-        count = 0
         odd_match_list = []
+        need_step = False   # 标志是否要跳过
         for tr in response.xpath('//table[contains(@class,"schedule")]').xpath('tr'):
-            if count == 0:
-                count += 1
+            # 如果没有tr_id说明是头部或者需要跳过则 跳过
+            if len(tr.xpath('@id')) == 0 or need_step:
+                need_step = False
                 continue
-            if count % 2 == 1:
+            tr_id = tr.xpath('@id').extract()[0]
+            # 如果下面成立说明是最新赔率行
+            if tr_id.split('_')[0].split('tr')[-1] != '':
+                single_match_tr_index = 2
+            else:
+                single_match_tr_index = 1
+            if single_match_tr_index == 1:
                 if len(tr.xpath('td')[0].xpath('text()').extract()) == 0:
+                    need_step = True
                     continue
                 league_name = tr.xpath('td')[0].xpath('text()').extract()[0]    # 联赛名称，是英文，需要用字典转为中文
-                # 如果不在要获取的联赛列表中就跳过
+                # 如果不在要获取的联赛列表中就跳过,要调过两个tr
                 if not league_name in match_name_dict.keys():
+                    need_step = True
                     continue
                 start_time_year = int(tr.xpath('td')[1].xpath('script/text()').extract()[0].replace('showtime(', '').replace(')', '').split(',')[0])
                 start_time_month = int(tr.xpath('td')[1].xpath('script/text()').extract()[0].replace('showtime(', '').replace(')', '').split(',')[1].split('-')[0])
@@ -201,22 +210,46 @@ class OddSpider(scrapy.Spider):
                 single_match_dict['original_payBack_rate'] = round(float(original_payBack_rate.replace('%', ''))/100, 3)
                 odd_match_list.append(single_match_dict)
             else:
-                match_index = int(count/2) - 1
-                home_now_odd = tr.xpath('td')[0].xpath('text()').extract()[0]
-                draw_now_odd = tr.xpath('td')[1].xpath('text()').extract()[0]
-                away_now_odd = tr.xpath('td')[2].xpath('text()').extract()[0]
-                home_now_probability = tr.xpath('td')[3].xpath('text()').extract()[0]
-                draw_now_probability = tr.xpath('td')[4].xpath('text()').extract()[0]
-                away_now_probability = tr.xpath('td')[5].xpath('text()').extract()[0]
-                now_payBack_rate = tr.xpath('td')[6].xpath('text()').extract()[0]
-                odd_match_list[match_index]['home_now_odd'] = float(home_now_odd)
-                odd_match_list[match_index]['draw_now_odd'] = float(draw_now_odd)
-                odd_match_list[match_index]['away_now_odd'] = float(away_now_odd)
-                odd_match_list[match_index]['home_now_probability'] = round(float(home_now_probability.replace('%', ''))/100, 3)
-                odd_match_list[match_index]['draw_now_probability'] = round(float(draw_now_probability.replace('%', ''))/100, 3)
-                odd_match_list[match_index]['away_now_probability'] = round(float(away_now_probability.replace('%', ''))/100, 3)
-                odd_match_list[match_index]['now_payBack_rate'] = round(float(now_payBack_rate.replace('%', ''))/100, 3)
-            count += 1
+                match_index = len(odd_match_list)-1
+                if len(tr.xpath('td')[0].xpath('text()').extract()) != 0:
+                    try:
+                        home_now_odd = tr.xpath('td')[0].xpath('text()').extract()[0]
+                        draw_now_odd = tr.xpath('td')[1].xpath('text()').extract()[0]
+                        away_now_odd = tr.xpath('td')[2].xpath('text()').extract()[0]
+                        home_now_probability = tr.xpath('td')[3].xpath('text()').extract()[0]
+                        draw_now_probability = tr.xpath('td')[4].xpath('text()').extract()[0]
+                        away_now_probability = tr.xpath('td')[5].xpath('text()').extract()[0]
+                        now_payBack_rate = tr.xpath('td')[6].xpath('text()').extract()[0]
+                    except:
+                        print('home_name:',odd_match_list[-1]['home_name'])
+                        pdb.set_trace()
+
+                    odd_match_list[match_index]['home_now_odd'] = float(home_now_odd)
+                    odd_match_list[match_index]['draw_now_odd'] = float(draw_now_odd)
+                    odd_match_list[match_index]['away_now_odd'] = float(away_now_odd)
+                    odd_match_list[match_index]['home_now_probability'] = round(
+                        float(home_now_probability.replace('%', '')) / 100, 3)
+                    odd_match_list[match_index]['draw_now_probability'] = round(
+                        float(draw_now_probability.replace('%', '')) / 100, 3)
+                    odd_match_list[match_index]['away_now_probability'] = round(
+                        float(away_now_probability.replace('%', '')) / 100, 3)
+                    odd_match_list[match_index]['now_payBack_rate'] = round(
+                        float(now_payBack_rate.replace('%', '')) / 100, 3)
+                else:
+                    home_now_odd = odd_match_list[match_index]['home_original_odd']
+                    draw_now_odd = odd_match_list[match_index]['draw_original_odd']
+                    away_now_odd = odd_match_list[match_index]['away_original_odd']
+                    home_now_probability = odd_match_list[match_index]['home_original_probability']
+                    draw_now_probability = odd_match_list[match_index]['draw_original_probability']
+                    away_now_probability = odd_match_list[match_index]['away_original_probability']
+                    now_payBack_rate = odd_match_list[match_index]['original_payBack_rate']
+                    odd_match_list[match_index]['home_now_odd'] = home_now_odd
+                    odd_match_list[match_index]['draw_now_odd'] = draw_now_odd
+                    odd_match_list[match_index]['away_now_odd'] = away_now_odd
+                    odd_match_list[match_index]['home_now_probability'] = home_now_probability
+                    odd_match_list[match_index]['draw_now_probability'] = draw_now_probability
+                    odd_match_list[match_index]['away_now_probability'] = away_now_probability
+                    odd_match_list[match_index]['now_payBack_rate'] = now_payBack_rate
 
         # 打开chinese2english, 将之前保存的首发信息中的名称转换为英文再与当前odd列表中的信息进行模糊匹配找出那场比赛，进行计算
         with open('auto_teams_analysis/chinese2english.json', 'r', encoding='utf-8') as json_file:
@@ -286,9 +319,9 @@ class OddSpider(scrapy.Spider):
             if home_rate > 0 and away_rate > 0:
                 if round(abs(home_rate - away_rate), 2) >= 0.25:
                     if home_rate > away_rate:
-                        support_direction = '主队极可能不败'
+                        support_direction = '主队88%不败(1.15),77%取胜(1.3)'
                     else:
-                        support_direction = '客队极可能不败'
+                        support_direction = '客队88%不败(1.15),77%取胜(1.3)'
                 elif round(abs(home_rate - away_rate), 2) >= 0.10:
                     big_probability_direction = ''  # 1 表示主队是大概率方向，-1表示客队是大概率方向
                     if odd_match_list[fount_index]['home_now_probability'] > odd_match_list[fount_index]['away_now_probability']:
@@ -380,7 +413,6 @@ class OddSpider(scrapy.Spider):
         all_match_Item = match_list_Item()
         all_match_Item['match_list'] = match_info_list
         all_match_Item['search_date'] = search_date.replace('-', '_')
-
 
         yield all_match_Item
 

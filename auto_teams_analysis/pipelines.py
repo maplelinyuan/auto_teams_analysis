@@ -81,6 +81,17 @@ class AutoTeamsAnalysisPipeline(object):
                         except Exception as e:
                             print("数据库执行失败 ", e)
 
+                    # 从auto_teams_rate数据库中抓取最新比分替换auto_teams_analysis
+                    # tableName = 'auto_teams_analysis.teams_' + search_date
+                    # cursor.execute(
+                    #     'SELECT match_id FROM %s' % tableName)
+                    # for single_match_id in cursor.fetchall():
+                    #     cursor.execute(
+                    #         'SELECT match_id,time_score FROM %s WHERE match_id="%s"' % (tableName, single_match_id['match_id']))
+                    #     cursor.fetchall()
+                    #     pdb.set_trace()
+
+
                 # connection is not autocommit by default. So you must commit to save your changes.
                 cursor.close()
                 if not connection.commit():
