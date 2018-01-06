@@ -11,18 +11,44 @@ import pymysql.cursors
 
 
 match_name_dict = {
+    'SPA CUP': '西杯',
+    'SPA D1': '西甲',
+    'SPA D2': '西乙',
+    'GER D1': '德甲',
+    'GER D2': '德乙',
+    'ENG PR': '英超',
+    'ENG LCH': '英冠',
+    'ENG FAC': '英足总杯',
+    'ITA D1': '意甲',
+    'ITA D2': '意乙',
+    'FRA D1': '法甲',
+    'FRA D2': '法乙',
+    'FRAC': '法国杯',
+    'POR D1': '葡超',
+    'SCO PR': '苏超',
+    'SCO CH': '苏冠',
+    'HOL D1': '荷甲',
+    'HOL D2': '荷乙',
+    'SWE D1': '瑞典超',
+    'FIN D1': '芬兰超',
+    'NOR D1': '挪超',
+    'DEN D1': '丹麦超',
+    'AUT D1': '奥地利超',
+    'SUI Sl': '瑞士超',
+    'IRE PR': '爱尔兰超',
+    'RUS PR': '俄超',
+    'POL D1': '波兰超',
+    'BEL D1': '比甲',
+    'BEL D2': '比乙',
+    'AUS D1': '澳超',
+    'GRE D1': '希腊超',
+    'ICE PR': '冰岛超',
+    'TUR D1': '土超',
     'ISL': '印度超',
     'IND D1': '印度甲',
     'BGD D1': '孟加拉超',
     # 'EGY D1': '埃及超',
     # 'INT CF': '国际友谊',
-    'SPA CUP': '西杯',
-    'POR D1': '葡超',
-    'ENG PR': '英超',
-    'ENG FAC': '英足总杯',
-    'ITA D1': '意甲',
-    'BEL D2': '比乙',
-    'AUS D1': '澳超',
 }
 
 current_hour = time.localtime()[3]  # 获取当前的小时数，如果小于8则应该选择yesterday
@@ -278,66 +304,66 @@ class OddSpider(scrapy.Spider):
                     # 主队首发率大于客队首发率
                         if big_probability_direction == 1:
                             if home_probability_change >= change_limit:
-                                support_direction = '主队大概率取胜'
+                                support_direction = '主队77%取胜(1.3),88%不败（1.15)'
                             elif home_probability_change <= -change_limit:
-                                support_direction = '客队大概率不败，不过要在下半场前及时对冲或卖出'
+                                support_direction = '客队77%不败(1.3),下半场前及时对冲'
                             else:
                             # 没有达到限制的概率变化
                                 if odd_match_list[fount_index]['home_now_probability'] > 0.85:
-                                    support_direction = '主队大概率胜两球或以上'
+                                    support_direction = '主队66%胜两球(1.5),77%取胜(1.3)'
                                 elif odd_match_list[fount_index]['home_now_probability'] > 0.55:
-                                    support_direction = '主队大概率取胜'
+                                    support_direction = '主队66%取胜(1.5),77%不败(1.3)'
                                 elif odd_match_list[fount_index]['home_now_probability'] > 0.30:
-                                    support_direction = '主队大概率不败'
+                                    support_direction = '主队66%不败(1.5),77%最多输一球(1.3)'
                                 elif odd_match_list[fount_index]['home_now_probability'] > 0.14:
-                                    support_direction = '主队大概率最多输一球'
+                                    support_direction = '主队66%最多输一球(1.5),77%最多输两球(1.3)'
                         elif big_probability_direction == -1:
                             if away_probability_change >= change_limit:
-                                support_direction = '客队大概率不败，不过要在下半场前及时对冲或卖出'
+                                support_direction = '客队77%不败(1.3),下半场前及时对冲'
                             elif away_probability_change <= -change_limit:
-                                support_direction = '主队大概率取胜'
+                                support_direction = '主队77%取胜(1.3),88%不败（1.15)'
                             else:
                                 # 没有达到限制的概率变化
                                 if odd_match_list[fount_index]['home_now_probability'] > 0.85:
-                                    support_direction = '主队大概率胜两球或以上'
+                                    support_direction = '主队66%胜两球(1.5),77%取胜(1.3)'
                                 elif odd_match_list[fount_index]['home_now_probability'] > 0.55:
-                                    support_direction = '主队大概率取胜'
+                                    support_direction = '主队66%取胜(1.5),77%不败(1.3)'
                                 elif odd_match_list[fount_index]['home_now_probability'] > 0.30:
-                                    support_direction = '主队大概率不败'
+                                    support_direction = '主队66%不败(1.5),77%最多输一球(1.3)'
                                 elif odd_match_list[fount_index]['home_now_probability'] > 0.14:
-                                    support_direction = '主队大概率最多输一球'
+                                    support_direction = '主队66%最多输一球(1.5),77%最多输两球(1.3)'
                     else:
                     # 客队首发率大于主队首发率
                         if big_probability_direction == -1:
                             if away_probability_change >= change_limit:
-                                support_direction = '客队大概率取胜'
+                                support_direction = '客队77%取胜(1.3),88%不败（1.15)'
                             elif away_probability_change <= -change_limit:
-                                support_direction = '主队大概率不败，不过要在下半场前及时对冲或卖出'
+                                support_direction = '主队77%不败(1.3),下半场前及时对冲'
                             else:
                             # 没有达到限制的概率变化
                                 if odd_match_list[fount_index]['away_now_probability'] > 0.85:
-                                    support_direction = '客队大概率胜两球或以上'
+                                    support_direction = '客队66%胜两球(1.5),77%取胜(1.3)'
                                 elif odd_match_list[fount_index]['away_now_probability'] > 0.55:
-                                    support_direction = '客队大概率取胜'
+                                    support_direction = '客队66%取胜(1.5),77%不败(1.3)'
                                 elif odd_match_list[fount_index]['away_now_probability'] > 0.30:
-                                    support_direction = '客队大概率不败'
+                                    support_direction = '客队66%不败(1.5),77%最多输一球(1.3)'
                                 elif odd_match_list[fount_index]['away_now_probability'] > 0.14:
-                                    support_direction = '客队大概率最多输一球'
+                                    support_direction = '客队66%最多输一球(1.5),77%最多输两球(1.3)'
                         elif big_probability_direction == 1:
                             if home_probability_change >= change_limit:
-                                support_direction = '主队大概率不败，不过要在下半场前及时对冲或卖出'
+                                support_direction = '主队77%不败(1.3),下半场前及时对冲'
                             elif home_probability_change <= -change_limit:
-                                support_direction = '客队大概率取胜'
+                                support_direction = '客队77%取胜(1.3),88%不败（1.15)'
                             else:
                                 # 没有达到限制的概率变化
                                 if odd_match_list[fount_index]['away_now_probability'] > 0.85:
-                                    support_direction = '客队大概率胜两球或以上'
+                                    support_direction = '客队66%胜两球(1.5),77%取胜(1.3)'
                                 elif odd_match_list[fount_index]['away_now_probability'] > 0.55:
-                                    support_direction = '客队大概率取胜'
+                                    support_direction = '客队66%取胜(1.5),77%不败(1.3)'
                                 elif odd_match_list[fount_index]['away_now_probability'] > 0.30:
-                                    support_direction = '客队大概率不败'
+                                    support_direction = '客队66%不败(1.5),77%最多输一球(1.3)'
                                 elif odd_match_list[fount_index]['away_now_probability'] > 0.14:
-                                    support_direction = '客队大概率最多输一球'
+                                    support_direction = '客队66%最多输一球(1.5),77%最多输两球(1.3)'
                 single_match_item = {}
                 single_match_item['match_id'] = match_id
                 single_match_item['match_name'] = match_name
