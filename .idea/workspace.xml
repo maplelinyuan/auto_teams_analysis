@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bb5ccf9-b2f1-4ab6-a04d-42131c4cf8e4" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/update_score.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/auto_teams_analysis/pipelines.py" afterPath="$PROJECT_DIR$/auto_teams_analysis/pipelines.py" />
-      <change beforePath="$PROJECT_DIR$/auto_teams_analysis/spiders/auto_teams_analysis.py" afterPath="$PROJECT_DIR$/auto_teams_analysis/spiders/auto_teams_analysis.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,8 +18,8 @@
       <file leaf-file-name="chinese2english.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/auto_teams_analysis/chinese2english.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="243" column="17" lean-forward="false" selection-start-line="243" selection-start-column="17" selection-end-line="243" selection-end-column="17" />
+            <state relative-caret-position="-582">
+              <caret line="172" column="4" lean-forward="false" selection-start-line="172" selection-start-column="4" selection-end-line="172" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -35,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auto_teams_analysis.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="auto_teams_analysis.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/auto_teams_analysis/spiders/auto_teams_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="411" column="24" lean-forward="false" selection-start-line="411" selection-start-column="24" selection-end-line="411" selection-end-column="24" />
+            <state relative-caret-position="-12">
+              <caret line="370" column="54" lean-forward="false" selection-start-line="370" selection-start-column="31" selection-end-line="370" selection-end-column="54" />
               <folding>
                 <marker date="1515257252184" expanded="true" signature="2340:2390" ph="SELECT * FRO... missing_value" />
                 <marker date="1515257252184" expanded="true" signature="3853:4363" ph="CREATE TABLE... IF" />
@@ -70,19 +70,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/auto_teams_analysis/pipelines.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="91" column="39" lean-forward="false" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
+            <state relative-caret-position="307">
+              <caret line="86" column="41" lean-forward="true" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
               <folding>
                 <element signature="e#229#251#0" expanded="true" />
-                <marker date="1515257619776" expanded="true" signature="1350:1932" ph="CREATE TABLE... IF" />
-                <marker date="1515257619776" expanded="true" signature="2173:2216" ph="SELECT match... missing_value" />
-                <marker date="1515257619776" expanded="true" signature="3404:3476" ph="UPDATE %s... " />
-                <marker date="1515257619776" expanded="true" signature="4064:4085" ph="SELECT match... missing_value" />
-                <marker date="1515257619776" expanded="true" signature="4064:4087" ph="SELECT match... missing_value" />
-                <marker date="1515257619776" expanded="true" signature="4233:4287" ph="SELECT match... missing_value" />
+                <marker date="1515261313193" expanded="true" signature="1350:1932" ph="CREATE TABLE... IF" />
+                <marker date="1515261313193" expanded="true" signature="2173:2216" ph="SELECT match... missing_value" />
+                <marker date="1515261313193" expanded="true" signature="3404:3476" ph="UPDATE %s... " />
               </folding>
             </state>
           </provider>
@@ -91,9 +88,26 @@
       <file leaf-file-name="timer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/timer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+            <state relative-caret-position="0">
+              <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="update_score.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/update_score.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="402">
+              <caret line="66" column="4" lean-forward="false" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+                <marker date="1515263909645" expanded="true" signature="611:632" ph="SELECT match... missing_value" />
+                <marker date="1515263909645" expanded="true" signature="1358:1403" ph="SELECT * FRO... missing_value" />
+                <marker date="1515263909645" expanded="true" signature="1375:1381" ph="SELECT * FRO... missing_value" />
+                <marker date="1515263909645" expanded="true" signature="1375:1383" ph="SELECT * FRO... missing_value" />
+                <marker date="1515263909645" expanded="true" signature="2194:2243" ph="UPDATE %s... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,8 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>DOWNLOAD_TIMEOUT</find>
-      <find>log</find>
       <find>auto_teams_rate</find>
       <find>set_</find>
       <find>Pdb</find>
@@ -159,8 +171,10 @@
       <find>continue</find>
       <find>count</find>
       <find>count</find>
-      <find>match_list</find>
       <find>tableName</find>
+      <find>match_list</find>
+      <find>league&quot;:&quot;11&quot;</find>
+      <find>search_date</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -179,6 +193,7 @@
         <option value="$PROJECT_DIR$/auto_teams_analysis/chinese2english.json" />
         <option value="$PROJECT_DIR$/auto_teams_analysis/spiders/auto_teams_analysis.py" />
         <option value="$PROJECT_DIR$/auto_teams_analysis/pipelines.py" />
+        <option value="$PROJECT_DIR$/update_score.py" />
       </list>
     </option>
   </component>
@@ -188,7 +203,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="1366" />
     <option name="height" value="728" />
   </component>
@@ -236,7 +251,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MB_analysis" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../auto_teams_rate" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -277,14 +292,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17377399" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -354,16 +369,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/auto_teams_analysis/spiders/rotate_useragent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/auto_teams_analysis/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
@@ -406,45 +411,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/auto_teams_analysis/chinese2english.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="243" column="17" lean-forward="false" selection-start-line="243" selection-start-column="17" selection-end-line="243" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/timer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+        <state relative-caret-position="0">
+          <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/auto_teams_analysis/spiders/auto_teams_analysis.py">
+    <entry file="file://$PROJECT_DIR$/update_score.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="411" column="24" lean-forward="false" selection-start-line="411" selection-start-column="24" selection-end-line="411" selection-end-column="24" />
+        <state relative-caret-position="402">
+          <caret line="66" column="4" lean-forward="false" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
           <folding>
-            <marker date="1515257252184" expanded="true" signature="2340:2390" ph="SELECT * FRO... missing_value" />
-            <marker date="1515257252184" expanded="true" signature="3853:4363" ph="CREATE TABLE... IF" />
+            <element signature="e#0#22#0" expanded="true" />
+            <marker date="1515263909645" expanded="true" signature="611:632" ph="SELECT match... missing_value" />
+            <marker date="1515263909645" expanded="true" signature="1358:1403" ph="SELECT * FRO... missing_value" />
+            <marker date="1515263909645" expanded="true" signature="1375:1381" ph="SELECT * FRO... missing_value" />
+            <marker date="1515263909645" expanded="true" signature="1375:1383" ph="SELECT * FRO... missing_value" />
+            <marker date="1515263909645" expanded="true" signature="2194:2243" ph="UPDATE %s... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto_teams_analysis/spiders/rotate_useragent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto_teams_analysis/chinese2english.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-582">
+          <caret line="172" column="4" lean-forward="false" selection-start-line="172" selection-start-column="4" selection-end-line="172" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/auto_teams_analysis/pipelines.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="91" column="39" lean-forward="false" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
+        <state relative-caret-position="307">
+          <caret line="86" column="41" lean-forward="true" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
           <folding>
             <element signature="e#229#251#0" expanded="true" />
-            <marker date="1515257619776" expanded="true" signature="1350:1932" ph="CREATE TABLE... IF" />
-            <marker date="1515257619776" expanded="true" signature="2173:2216" ph="SELECT match... missing_value" />
-            <marker date="1515257619776" expanded="true" signature="3404:3476" ph="UPDATE %s... " />
-            <marker date="1515257619776" expanded="true" signature="4064:4085" ph="SELECT match... missing_value" />
-            <marker date="1515257619776" expanded="true" signature="4064:4087" ph="SELECT match... missing_value" />
-            <marker date="1515257619776" expanded="true" signature="4233:4287" ph="SELECT match... missing_value" />
+            <marker date="1515261313193" expanded="true" signature="1350:1932" ph="CREATE TABLE... IF" />
+            <marker date="1515261313193" expanded="true" signature="2173:2216" ph="SELECT match... missing_value" />
+            <marker date="1515261313193" expanded="true" signature="3404:3476" ph="UPDATE %s... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto_teams_analysis/spiders/auto_teams_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="370" column="54" lean-forward="false" selection-start-line="370" selection-start-column="31" selection-end-line="370" selection-end-column="54" />
+          <folding>
+            <marker date="1515257252184" expanded="true" signature="2340:2390" ph="SELECT * FRO... missing_value" />
+            <marker date="1515257252184" expanded="true" signature="3853:4363" ph="CREATE TABLE... IF" />
           </folding>
         </state>
       </provider>
