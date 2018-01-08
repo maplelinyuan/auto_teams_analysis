@@ -273,14 +273,17 @@ class OddSpider(scrapy.Spider):
             away_rate = single_match['away_rate']
 
             # 查找对应的比赛
-            patten_home_name_1 = home_name[0:4] + '.*?'
-            regex_home_name_1 = re.compile(patten_home_name_1)
-            patten_home_name_2 = home_name[-4:] + '.*?'
-            regex_home_name_2 = re.compile(patten_home_name_2)
-            patten_away_name_1 = away_name[0:4] + '.*?'
-            regex_away_name_1 = re.compile(patten_away_name_1)
-            patten_away_name_2 = away_name[-4:] + '.*?'
-            regex_away_name_2 = re.compile(patten_away_name_2)
+            try:
+                patten_home_name_1 = home_name[0:3] + '.*?'
+                regex_home_name_1 = re.compile(patten_home_name_1)
+                patten_home_name_2 = home_name[-3:] + '.*?'
+                regex_home_name_2 = re.compile(patten_home_name_2)
+                patten_away_name_1 = away_name[0:3] + '.*?'
+                regex_away_name_1 = re.compile(patten_away_name_1)
+                patten_away_name_2 = away_name[-3:] + '.*?'
+                regex_away_name_2 = re.compile(patten_away_name_2)
+            except:
+                pdb.set_trace()
             odd_home_name_list = [item['home_name'] for item in odd_match_list]
             odd_away_name_list = [item['away_name'] for item in odd_match_list]
             # pdb.set_trace()
@@ -333,6 +336,7 @@ class OddSpider(scrapy.Spider):
                     away_probability_change = odd_match_list[fount_index]['away_now_probability'] - odd_match_list[fount_index]['away_original_probability']    # 客胜初盘到目前变化的概率
 
                     change_limit = 0.027    # 限制的概率变化
+                    # 只分析相同联赛的球队
                     if home_rate > away_rate:
                     # 主队首发率大于客队首发率
                         if big_probability_direction == 1:
