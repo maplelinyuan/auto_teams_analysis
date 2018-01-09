@@ -3,7 +3,7 @@ import datetime
 import json
 import pdb
 
-search_date = '2018_01_07'
+search_date = '2018_01_08'
 
 # 从auto_teams_rate数据库中抓取最新比分替换auto_teams_analysis
 # Connect to the database
